@@ -1,17 +1,13 @@
 
 FUNCTION(add_matlab_cpp_executable appName mainFile)
 
-  # set(MATLAB_FUNCTION_${appName} ${appName} CACHE STRING "Name of the main resulting matlab function.")
-
   # setup doc for matlab functions
-  # configure_file(${PROJECT_SOURCE_DIR}/source/${appName}.m
-  #   ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${appName}.m)
+  set(MATLAB_FUNCTION_NAME ${appName})
+  configure_file(${appName}.m ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${appName}.m)
 
   add_library(${appName} ${mainFile} ${ARGN})
-  # target_link_libraries(${appName} ${ITK_LIBRARIES} )
-  if(APPLE)
-    target_link_libraries(${appName} ${MATLAB_LIBRARIES} )
-  endif()
+  target_link_libraries(${appName} ${MATLAB_LIBRARIES})
+
   if(MSYS)
     target_link_libraries(${appName} stdc++)
   endif()
@@ -29,17 +25,13 @@ ENDFUNCTION(add_matlab_cpp_executable)
 
 FUNCTION(add_matlab_c_executable appName mainFile)
 
-  # set(MATLAB_FUNCTION_${appName} ${appName} CACHE STRING "Name of the main resulting matlab function.")
-
   # setup doc for matlab functions
-  # configure_file(${PROJECT_SOURCE_DIR}/source/${appName}.m
-  #   ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${appName}.m)
+  set(MATLAB_FUNCTION_NAME ${appName})
+  configure_file(${appName}.m ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${appName}.m)
 
   add_library(${appName} ${mainFile} ${ARGN})
-  # target_link_libraries(${appName} ${ITK_LIBRARIES} )
-  if(APPLE)
-    target_link_libraries(${appName} ${MATLAB_LIBRARIES} )
-  endif()
+  target_link_libraries(${appName} ${MATLAB_LIBRARIES})
+
   if(MSYS)
     target_link_libraries(${appName} stdc++)
   endif()

@@ -12,8 +12,6 @@ FUNCTION(add_matlab_cpp_executable appName mainFile)
     target_link_libraries(${appName} stdc++)
   endif()
 
-  install(TARGETS ${appName} DESTINATION ${CMAKE_INSTALL_PREFIX})
-
   add_custom_command(TARGET ${appName} 
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory ${PROJECT_BINARY_DIR}/bin
@@ -35,8 +33,6 @@ FUNCTION(add_matlab_c_executable appName mainFile)
   if(MSYS)
     target_link_libraries(${appName} stdc++)
   endif()
-
-  install(TARGETS ${appName} DESTINATION ${CMAKE_INSTALL_PREFIX})
 
   add_custom_command(TARGET ${appName} 
     POST_BUILD

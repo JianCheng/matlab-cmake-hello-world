@@ -6,7 +6,13 @@ https://github.com/thewtex/matlab-cmake-hello-world.git
 For more information, see
 http://www.cmake.org/Wiki/CMake:MatlabMex
 
-Please note:
+This code shows two ways to generate mex file using CMake. 
+
+ 
+The first one using mex_link.sh
+-------------------------------
+
+please note:
 
 * the instruction in http://www.cmake.org/Wiki/CMake:MatlabMex needs to rebuild cmake using a specific patch such that mex can be used to build all codes. Here we use c++ and cc, not mex, to build the cpp/c codes. No patch is needed. 
 * The library should be built as **shared** libs \*.so. 
@@ -20,3 +26,11 @@ In mac, the error information shows
     ld: library not found for -lbundle1.o
     collect2: ld returned 1 exit status 
 
+
+The second one using cmake macro
+--------------------------------
+
+The cmake macro is from 
+http://hdl.handle.net/10380/3060 
+
+This way is more elegant compared to the first way. 

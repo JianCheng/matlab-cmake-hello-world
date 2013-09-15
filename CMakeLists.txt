@@ -8,13 +8,15 @@ SET (CMAKE_RUNTIME_OUTPUT_DIRECTORY
 
 SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/CMake)
 INCLUDE(ProjectCMakeFunctions)
+INCLUDE(MatlabMakeMacros)
 
 OPTION(BUILD_SHARED_LIBS "Build shared libs" ON)
 
-if(APPLE)
+# if(APPLE)
   find_package(Matlab REQUIRED)
-endif()
+# endif()
 
+message("MATLAB_INCLUDE_DIR="${MATLAB_INCLUDE_DIR})
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/tests ${MATLAB_INCLUDE_DIR})
 add_subdirectory(tests)
 

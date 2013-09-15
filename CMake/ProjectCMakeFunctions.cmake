@@ -14,7 +14,7 @@ FUNCTION(add_matlab_cpp_executable appName mainFile)
 
   add_custom_command(TARGET ${appName} 
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${PROJECT_BINARY_DIR}/bin
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     COMMAND ${PROJECT_SOURCE_DIR}/utilsMEX/mex_link.sh  ${appName} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ${PROJECT_SOURCE_DIR}/utilsMEX/mex_stub.cpp
     )
 
@@ -36,7 +36,7 @@ FUNCTION(add_matlab_c_executable appName mainFile)
 
   add_custom_command(TARGET ${appName} 
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${PROJECT_BINARY_DIR}/bin
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     COMMAND ${PROJECT_SOURCE_DIR}/utilsMEX/mex_link.sh  ${appName} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ${PROJECT_SOURCE_DIR}/utilsMEX/mex_stub.c
     )
 

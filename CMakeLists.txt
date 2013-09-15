@@ -12,11 +12,8 @@ INCLUDE(MatlabMakeMacros)
 
 OPTION(BUILD_SHARED_LIBS "Build shared libs" ON)
 
-# if(APPLE)
-  find_package(Matlab REQUIRED)
-# endif()
+find_package(Matlab REQUIRED)
 
-message("MATLAB_INCLUDE_DIR="${MATLAB_INCLUDE_DIR})
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/tests ${MATLAB_INCLUDE_DIR})
 add_subdirectory(tests)
 
